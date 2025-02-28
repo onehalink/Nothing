@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<!--Core/Container-->
+	<Type Name="Engine::DynamicArray&lt;*&gt;">
+		<DisplayString>{{count = {count} capacity={storage.count}}}</DisplayString>
+		<Expand>
+			<Item Name="count">count</Item>
+			<Item Name="capacity">storage.count</Item>
+			<ArrayItems>
+				<Size>count</Size>
+				<ValuePointer>storage.buffer</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+	<!--Core/Mathematics-->
+	<Type Name="Engine::Vector&lt;*&gt;">
+		<DisplayString Optional="true">{{x = {x} y = {y} z = {z} w = {w}}}</DisplayString>
+		<DisplayString Optional="true">{{x = {x} y = {y} z = {z}}}</DisplayString>
+		<DisplayString Optional="true">{{x = {x} y = {y}}}</DisplayString>
+	</Type>
+	<!--Core/String-->
+	<Type Name="Engine::String&lt;*&gt;">
+		<DisplayString Condition="storage.buffer==0">empty</DisplayString>
+		<DisplayString Condition="charSize==1">{{text={storage.buffer, s8} length={storage.count - 1}}}</DisplayString>
+		<DisplayString Condition="charSize==2">{{text={storage.buffer, su} length={storage.count - 1}}}</DisplayString>
+		<DisplayString Condition="charSize==4">{{text={storage.buffer, s32} length={storage.count - 1}}}</DisplayString>
+		<Expand>
+			<Item Name="text" Condition="charSize==1">storage.buffer, s8</Item>
+			<Item Name="text" Condition="charSize==2">storage.buffer, su</Item>
+			<Item Name="text" Condition="charSize==4">storage.buffer, s32</Item>
+			<Item Name="length">storage.count - 1</Item>
+		</Expand>
+	</Type>
+</AutoVisualizer>
