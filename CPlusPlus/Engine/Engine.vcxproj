@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{b6cfe885-297e-43dc-9c19-27c7fee935b7}</ProjectGuid>
+    <RootNamespace>Engine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)/$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)/$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)/$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)</OutDir>
+    <IntDir>$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)/$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Include\Engine.h" />
+    <ClInclude Include="Source\Runtime\Asset\Texture.h" />
+    <ClInclude Include="Source\Runtime\Codec\Bitmap.h" />
+    <ClInclude Include="Source\Runtime\Core.h" />
+    <ClInclude Include="Source\Runtime\Core\Algorithm\BinarySearch.h" />
+    <ClInclude Include="Source\Runtime\Core\Algorithm\QuickSort.h" />
+    <ClInclude Include="Source\Runtime\Core\Allocator\DefaultAllocator.h" />
+    <ClInclude Include="Source\Runtime\Core\AsciiSet.h" />
+    <ClInclude Include="Source\Runtime\Core\Assert.h" />
+    <ClInclude Include="Source\Runtime\Core\Base64.h" />
+    <ClInclude Include="Source\Runtime\Core\Buffer.h" />
+    <ClInclude Include="Source\Runtime\Core\Build.h" />
+    <ClInclude Include="Source\Runtime\Core\Char.h" />
+    <ClInclude Include="Source\Runtime\Core\ClassConstructorDestructor.h" />
+    <ClInclude Include="Source\Runtime\Core\Container\DynamicArray.h" />
+    <ClInclude Include="Source\Runtime\Core\Container\LinkedList.h" />
+    <ClInclude Include="Source\Runtime\Core\Container\Stack.h" />
+    <ClInclude Include="Source\Runtime\Core\CoreMinimal.h" />
+    <ClInclude Include="Source\Runtime\Core\CountArray.h" />
+    <ClInclude Include="Source\Runtime\Core\Endian.h" />
+    <ClInclude Include="Source\Runtime\Core\Enum.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Color.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Matrix.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Matrix3.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Matrix4.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\RandomNumber.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Rectangle.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\SignedDistanceField.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\SimpleArithmeticExpression.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Trigonometry.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Vector.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Format.h" />
+    <ClInclude Include="Source\Runtime\Core\Forward.h" />
+    <ClInclude Include="Source\Runtime\Core\Function.h" />
+    <ClInclude Include="Source\Runtime\Core\InPlace.h" />
+    <ClInclude Include="Source\Runtime\Core\Iterator\Adapter.h" />
+    <ClInclude Include="Source\Runtime\Core\Iterator\Advance.h" />
+    <ClInclude Include="Source\Runtime\Core\Iterator\Category.h" />
+    <ClInclude Include="Source\Runtime\Core\Iterator\Distance.h" />
+    <ClInclude Include="Source\Runtime\Core\Literal.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\Numeric.h" />
+    <ClInclude Include="Source\Runtime\Core\Mathematics\NumericLimit.h" />
+    <ClInclude Include="Source\Runtime\Core\Memory.h" />
+    <ClInclude Include="Source\Runtime\Core\NonCopyable.h" />
+    <ClInclude Include="Source\Runtime\Core\NullTerminatedString.h" />
+    <ClInclude Include="Source\Runtime\Core\ParameterPack.h" />
+    <ClInclude Include="Source\Runtime\Core\Parse.h" />
+    <ClInclude Include="Source\Runtime\Core\PlacementNew.h" />
+    <ClInclude Include="Source\Runtime\Core\Result.h" />
+    <ClInclude Include="Source\Runtime\Core\Span.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Contain.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Find.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Insert.h" />
+    <ClInclude Include="Source\Runtime\Core\String\ParseLines.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Remove.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Replace.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Split.h" />
+    <ClInclude Include="Source\Runtime\Core\String\StartEnd.h" />
+    <ClInclude Include="Source\Runtime\Core\String\String.h" />
+    <ClInclude Include="Source\Runtime\Core\String\StringBuilder.h" />
+    <ClInclude Include="Source\Runtime\Core\StringCast.h" />
+    <ClInclude Include="Source\Runtime\Core\String\StringView.h" />
+    <ClInclude Include="Source\Runtime\Core\String\Trim.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\AndOrNot.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\BoolConstant.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\Conditional.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IntegralConstant.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsArithmetic.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsChar.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsConstructible.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsConvertible.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsEnum.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsEnumClass.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsFloatPoint.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\IsIntegral.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\MakeSignedUnsigned.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemoveAllExtents.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemoveAllPointers.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemoveAllQualifiers.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemoveConst.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemoveExtent.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemovePointer.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\RemoveReference.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\SameAsAny.h" />
+    <ClInclude Include="Source\Runtime\Core\Template\TypesAreSame.h" />
+    <ClInclude Include="Source\Runtime\Core\Tuple.h" />
+    <ClInclude Include="Source\Runtime\Core\Type.h" />
+    <ClInclude Include="Source\Runtime\Core\Unicode.h" />
+    <ClInclude Include="Source\Runtime\Core\Variant.h" />
+    <ClInclude Include="Source\Runtime\Function\Interface\IRenderable.h" />
+    <ClInclude Include="Source\Runtime\Function\Render\Render.h" />
+    <ClInclude Include="Source\Runtime\Function\Render\Serface.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Alignment.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Attachment.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Custom\InnerWindow.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Custom\InputField.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Custom\Text.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Custom\Tooltip.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\DefaultAsset.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\DefaultValue.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Element.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Location.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Mask.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\Padding.h" />
+    <ClInclude Include="Source\Runtime\Function\UI\_Helper.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\Diagnostics\Debug.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\Diagnostics\Timer.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\FileSystem\Directory.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\FileSystem\File.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\FileSystem\Path.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\Input\InputSystem.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\Input\Keyboard.h" />
+    <ClInclude Include="Source\Runtime\Platform\Service\Input\Mouse.h" />
+    <ClInclude Include="Source\Runtime\Platform\Windows\Clipboard.h" />
+    <ClInclude Include="Source\Runtime\Platform\Windows\FileDialog.h" />
+    <ClInclude Include="Source\Runtime\Platform\Windows\GraphicsDeviceInterface.h" />
+    <ClInclude Include="Source\Runtime\Platform\Windows\Window.h" />
+    <ClInclude Include="Source\Runtime\Platform\Windows\Windows.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Runtime\Asset\Texture.cpp" />
+    <ClCompile Include="Source\Runtime\Codec\Bitmap.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Base64.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Buffer.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\Color.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\Matrix3.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\Matrix4.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\Numeric.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\RandomNumber.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\SignedDistanceField.cpp" />
+    <ClCompile Include="Source\Runtime\Core\Mathematics\Trigonometry.cpp" />
+    <ClCompile Include="Source\Runtime\Function\Render\Render.cpp" />
+    <ClCompile Include="Source\Runtime\Function\Render\Serface.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Attachment.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Custom\InnerWindow.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Custom\InputField.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Custom\Text.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Custom\Tooltip.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\DefaultAsset.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Element.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Mask.cpp" />
+    <ClCompile Include="Source\Runtime\Function\UI\Padding.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Service\Diagnostics\Debug.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Service\Diagnostics\Timer.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Service\FileSystem\Directory.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Service\FileSystem\File.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Service\FileSystem\Path.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Service\Input\InputSystem.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Windows\Clipboard.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Windows\FileDialog.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Windows\GraphicsDeviceInterface.cpp" />
+    <ClCompile Include="Source\Runtime\Platform\Windows\Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="Debugger\Engine.natvis" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

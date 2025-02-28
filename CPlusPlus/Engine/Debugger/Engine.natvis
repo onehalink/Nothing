@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	
+	<!--Runtime/Core/Container-->
+	
+	<!--DynamicArray-->
+	<Type Name="Engine::Template::DynamicArray&lt;*&gt;">
+		<DisplayString>{{ buffer = {buffer} count = {count} capacity = {capacity} }}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="count">count</Item>
+			<Item Name="capacity">capacity</Item>
+			<ArrayItems>
+				<Size>count</Size>
+				<ValuePointer>buffer</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<!--LinkedList::Node-->
+	<Type Name="Engine::Template::LinkedList&lt;*&gt;::Node">
+		<DisplayString>{{ previous = {(void*)previous, X} this = {(void*)this, X} next = {(void*)next, X} element = {element} }}</DisplayString>
+	</Type>
+	<!--LinkedList-->
+	<Type Name="Engine::Template::LinkedList&lt;*&gt;">
+		<DisplayString>{{ head = {*head} tail = {*tail} nodeCount = {nodeCount} }}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="head">*head</Item>
+			<Item Name="tail">*tail</Item>
+			<Item Name="nodeCount">nodeCount</Item>
+			<CustomListItems>
+				<Variable Name="node" InitialValue="head"/>
+				<Loop>
+					<Break Condition="node==0"/>
+					<Item>*node</Item>
+					<Exec>node = node->next</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<!--Stack-->
+	<Type Name="Engine::Template::Stack&lt;*&gt;">
+		<DisplayString>{{ buffer = {storage.buffer} count = {storage.count} top = {*(storage.buffer + storage.count - 1)} }}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="buffer">storage.buffer</Item>
+			<Item Name="count">storage.count</Item>
+			<Item Name="top">*(storage.buffer + storage.count - 1)</Item>
+			<CustomListItems>
+				<Variable Name="begin" InitialValue="storage.buffer"/>
+				<Variable Name="end" InitialValue="storage.buffer"/>
+				<Exec>begin += storage.count - 1</Exec>
+				<Exec>end -= 1</Exec>
+				<Loop>
+					<Break Condition="begin==end"/>
+					<Item>*begin</Item>
+					<Exec>begin--</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	
+	<!--Runtime/Core/Mathematics-->
+
+	<!--Color-->
+	<Type Name="Engine::Color">
+		<DisplayString>{{ red = {(int)r} green = {(int)g} blue = {(int)b} alpha = {(int)a} }}</DisplayString>
+		<Expand>
+			<Item Name="packedBits">packedBits, X</Item>
+			<Item Name="red">(int)r</Item>
+			<Item Name="green">(int)g</Item>
+			<Item Name="blue">(int)b</Item>
+			<Item Name="alpha">(int)a</Item>
+		</Expand>
+	</Type>
+	<Type Name="Engine::LinearColor">
+		<DisplayString>{{ red = {r, g} green = {g, g} blue = {b, g} alpha = {a, g} }}</DisplayString>
+		<Expand>
+			<Item Name="red">r, g</Item>
+			<Item Name="green">g, g</Item>
+			<Item Name="blue">b, g</Item>
+			<Item Name="alpha">a, g</Item>
+		</Expand>
+	</Type>
+
+	<!--Matrix-->
+	<Type Name="Engine::Matrix&lt;*&gt;">
+		<Expand>
+			<CustomListItems>
+				<Variable Name="index" InitialValue="0"/>
+				<Loop>
+					<Break Condition="index==D"/>
+					<Item Name="row[{index}]">($T2*)this + D * index, [D]nag</Item>
+					<Exec>++index</Exec>
+				</Loop>
+			</CustomListItems>
+		</Expand>
+	</Type>
+
+	<!--Rectangle-->
+	<Type Name="Engine::Rectangle&lt;*&gt;">
+		<DisplayString Condition="left&gt;=right || bottom&gt;=top">invalid</DisplayString>
+		<DisplayString>{{ minimum = {minimum} maximum = {maximum} width = {right - left} height = {top - bottom} }}</DisplayString>
+	</Type>
+	
+	<!--Vector-->
+	<Type Name="Engine::Vector&lt;*&gt;">
+		<DisplayString Optional="true">{{ x = {x, g} y = {y, g} z = {z, g} w = {w, g} }}</DisplayString>
+		<DisplayString Optional="true">{{ x = {x, g} y = {y, g} z = {z, g} }}</DisplayString>
+		<DisplayString Optional="true">{{ x = {x, g} y = {y, g} }}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="x">x, g</Item>
+			<Item Name="y">y, g</Item>
+			<Item Name="z" Optional="true">z, g</Item>
+			<Item Name="w" Optional="true">w, g</Item>
+		</Expand>
+	</Type>
+	
+	
+	<!--Runtime/Core/Miscellaneous-->
+	
+	<!--Memory-->
+	<Type Name="Engine::Template::Memory&lt;*&gt;">
+		<DisplayString>{{ buffer = {buffer} count = {count} }}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="count">count</Item>
+			<ArrayItems>
+				<Size>count</Size>
+				<ValuePointer>buffer</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<!--Result-->
+	<Type Name="Engine::Result&lt;*&gt;">
+		<DisplayString Condition="value.index==0 &amp;&amp; ((Engine::String&lt;char&gt;*)value.storage)->storage.buffer==0">invalid</DisplayString>
+		<DisplayString Condition="value.index==0">{{ error = {((Engine::String&lt;char&gt;*)value.storage)->storage.buffer, s8} }}</DisplayString>
+		<DisplayString Condition="value.index==1">{{ value = {*($T1*)value.storage} }}</DisplayString>
+	</Type>
+	
+	<!--Span-->
+	<Type Name="Engine::Span&lt;*&gt;">
+		<DisplayString>{{ buffer = {buffer} count = {count} }}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="count">count</Item>
+			<ArrayItems>
+				<Size>count</Size>
+				<ValuePointer>buffer</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<!--Tuple-->
+	<Type Name="Engine::Tuple&lt;&gt;">
+		<DisplayString>empty</DisplayString>
+	</Type>
+	<Type Name="Engine::Tuple&lt;*&gt;">
+		<DisplayString Optional="true">{{[0] = {value} [1] = {((Base*)this)->value} [2] = {((Base::Base*)this)->value} [3] = {((Base::Base::Base*)this)->value}}}</DisplayString>
+		<DisplayString Optional="true">{{[0] = {value} [1] = {((Base*)this)->value} [2] = {((Base::Base*)this)->value}}}</DisplayString>
+		<DisplayString Optional="true">{{[0] = {value} [1] = {((Base*)this)->value}}}</DisplayString>
+		<DisplayString Optional="true">{{[0] = {value}}}</DisplayString>
+		<Expand HideRawView="true">
+			<Item Name="[0]" Optional="true">value</Item>
+			<Item Name="[1]" Optional="true">((Base*)this)->value</Item>
+			<Item Name="[2]" Optional="true">((Base::Base*)this)->value</Item>
+			<Item Name="[3]" Optional="true">((Base::Base::Base*)this)->value</Item>
+			<Item Name="[4]" Optional="true">((Base::Base::Base::Base*)this)->value</Item>
+			<Item Name="[5]" Optional="true">((Base::Base::Base::Base::Base*)this)->value</Item>
+			<Item Name="[6]" Optional="true">((Base::Base::Base::Base::Base::Base*)this)->value</Item>
+			<Item Name="[7]" Optional="true">((Base::Base::Base::Base::Base::Base::Base*)this)->value</Item>
+		</Expand>
+	</Type>
+
+	<!--Variant-->
+	<Type Name="Engine::Variant&lt;*&gt;">
+		<DisplayString Condition="index==0" Optional="true"> [index = {index}] {*($T1*)storage}</DisplayString>
+		<DisplayString Condition="index==1" Optional="true"> [index = {index}] {*($T2*)storage}</DisplayString>
+		<DisplayString Condition="index==2" Optional="true"> [index = {index}] {*($T3*)storage}</DisplayString>
+		<DisplayString Condition="index==3" Optional="true"> [index = {index}] {*($T4*)storage}</DisplayString>
+		<DisplayString Condition="index==4" Optional="true"> [index = {index}] {*($T5*)storage}</DisplayString>
+		<DisplayString Condition="index==5" Optional="true"> [index = {index}] {*($T6*)storage}</DisplayString>
+		<DisplayString Condition="index==6" Optional="true"> [index = {index}] {*($T7*)storage}</DisplayString>
+		<DisplayString Condition="index==7" Optional="true"> [index = {index}] {*($T8*)storage}</DisplayString>
+		<DisplayString Condition="index==8" Optional="true"> [index = {index}] {*($T9*)storage}</DisplayString>
+		<DisplayString Condition="index==9" Optional="true"> [index = {index}] {*($T10*)storage}</DisplayString>
+		<DisplayString Condition="index==10" Optional="true"> [index = {index}] {*($T11*)storage}</DisplayString>
+		<DisplayString Condition="index==11" Optional="true"> [index = {index}] {*($T12*)storage}</DisplayString>
+		<DisplayString Condition="index==12" Optional="true"> [index = {index}] {*($T13*)storage}</DisplayString>
+		<DisplayString Condition="index==13" Optional="true"> [index = {index}] {*($T14*)storage}</DisplayString>
+		<DisplayString Condition="index==14" Optional="true"> [index = {index}] {*($T15*)storage}</DisplayString>
+		<DisplayString Condition="index==15" Optional="true"> [index = {index}] {*($T16*)storage}</DisplayString>
+		<DisplayString Condition="index==16" Optional="true"> [index = {index}] {*($T17*)storage}</DisplayString>
+		<DisplayString Condition="index==17" Optional="true"> [index = {index}] {*($T18*)storage}</DisplayString>
+		<DisplayString Condition="index==18" Optional="true"> [index = {index}] {*($T19*)storage}</DisplayString>
+		<DisplayString Condition="index==19" Optional="true"> [index = {index}] {*($T20*)storage}</DisplayString>
+		<DisplayString Condition="index==20" Optional="true"> [index = {index}] {*($T21*)storage}</DisplayString>
+		<DisplayString Condition="index==21" Optional="true"> [index = {index}] {*($T22*)storage}</DisplayString>
+		<DisplayString Condition="index==22" Optional="true"> [index = {index}] {*($T23*)storage}</DisplayString>
+		<DisplayString Condition="index==23" Optional="true"> [index = {index}] {*($T24*)storage}</DisplayString>
+		<DisplayString Condition="index==24" Optional="true"> [index = {index}] {*($T25*)storage}</DisplayString>
+		<DisplayString Condition="index==25" Optional="true"> [index = {index}] {*($T26*)storage}</DisplayString>
+		<DisplayString Condition="index==26" Optional="true"> [index = {index}] {*($T27*)storage}</DisplayString>
+		<DisplayString Condition="index==27" Optional="true"> [index = {index}] {*($T28*)storage}</DisplayString>
+		<DisplayString Condition="index==28" Optional="true"> [index = {index}] {*($T29*)storage}</DisplayString>
+		<DisplayString Condition="index==29" Optional="true"> [index = {index}] {*($T30*)storage}</DisplayString>
+		<DisplayString Condition="index==30" Optional="true"> [index = {index}] {*($T31*)storage}</DisplayString>
+		<DisplayString Condition="index==31" Optional="true"> [index = {index}] {*($T32*)storage}</DisplayString>
+	</Type>
+
+	<!--Runtime/Core/String-->
+	
+	<!--String-->
+	<Type Name="Engine::String&lt;*&gt;">
+		<DisplayString Condition="storage.buffer==0">empty</DisplayString>
+		<DisplayString Condition="CharSize==1">{{ text = {storage.buffer, s8} length = {storage.count - 1} }}</DisplayString>
+		<DisplayString Condition="CharSize==2">{{ text = {storage.buffer, su} length = {storage.count - 1} }}</DisplayString>
+		<DisplayString Condition="CharSize==4">{{ text = {storage.buffer, s32} length = {storage.count - 1} }}</DisplayString>
+	</Type>
+	
+	<!--StringView-->
+	<Type Name="Engine::StringView&lt;*&gt;">
+		<DisplayString Condition="count==0">empty</DisplayString>
+		<DisplayString Condition="CharSize==1">{{ text = {buffer, [count]s8}U8SV length = {count} }}</DisplayString>
+		<DisplayString Condition="CharSize==2">{{ text = {buffer, [count]su}U16SV length = {count} }}</DisplayString>
+		<DisplayString Condition="CharSize==4">{{ text = {buffer, [count]s32}U32SV length = {count} }}</DisplayString>
+	</Type>
+	
+	<!--StringBuilder-->
+	<Type Name="Engine::StringBuilder&lt;*&gt;">
+		<DisplayString Condition="count==0">empty</DisplayString>
+		<DisplayString Condition="CharSize==1">{{ text = {storage.buffer, [count]s8} length = {count} }}</DisplayString>
+		<DisplayString Condition="CharSize==2">{{ text = {storage.buffer, [count]su} length = {count} }}</DisplayString>
+		<DisplayString Condition="CharSize==4">{{ text = {storage.buffer, [count]s32} length = {count} }}</DisplayString>
+	</Type>
+
+</AutoVisualizer>

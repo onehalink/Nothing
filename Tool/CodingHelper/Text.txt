@@ -1,0 +1,48 @@
+#pragma once
+
+/**
+* Used by the other C++ project
+* 
+* Note:
+* Build this project as a dynamic link library
+*/
+
+
+
+/**
+* For Visual Studio(Configuration Properties/General)
+* 
+* Output Directory:			$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)
+* Intermediate Directory:	$(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)/$(ProjectName)
+*/
+
+
+/**
+* [Include]
+* 
+* Path(Visual Studio Macro): $(SolutionDir)CPlusPlus/Engine/Source/Include
+*/
+
+
+/**
+* [Link]
+* 
+* Path(Visual Studio Macro): $(SolutionDir)Binary/CPlusPlus/$(Configuration)/$(Platform)
+*/
+#pragma comment(lib, "Engine")
+
+
+/**
+* Import engine
+* 
+* Note:
+* As a flag to define ENGINE_API(default is DLL_EXPORT and used by this project) as DLL_IMPORT
+*/
+#if !defined(ENGINE_API_IMPORTS)
+#define ENGINE_API_IMPORTS
+#endif
+
+
+/**
+* API set
+*/
