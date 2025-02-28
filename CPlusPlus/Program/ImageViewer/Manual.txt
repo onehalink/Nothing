@@ -1,0 +1,5 @@
+MouseWheel: zoom in/out
+
+Moving mouse to drag image when left mouse button is pressed
+
+Click Key [O] to load other image
